@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  especie: MyString
+  tutor: one
+  veterinario: one
+
+two:
+  nome: MyString
+  especie: MyString
+  tutor: two
+  veterinario: two
