@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_19_181118) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_195300) do
+  create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nome"
+    t.string "especie"
+    t.bigint "tutor_id", null: false
+    t.bigint "veterinario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tutor_id"], name: "index_pets_on_tutor_id"
+    t.index ["veterinario_id"], name: "index_pets_on_veterinario_id"
+  end
+
   create_table "tutors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nome"
     t.string "telefone"
@@ -20,4 +31,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_19_181118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "veterinarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nome"
+    t.string "especialidade"
+    t.string "telefone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "pets", "tutors"
+  add_foreign_key "pets", "veterinarios"
 end
