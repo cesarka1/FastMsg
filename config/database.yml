@@ -1,0 +1,23 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: root
+  password: <%= ENV['FAST_MSG_DATABASE_PASSWORD'] || 'root123' %>
+  host: <%= ENV['DB_HOST'] || 'db' %>
+  port: 3306
+
+development:
+  <<: *default
+  database: fast_msg_development
+
+test:
+  <<: *default
+  database: fast_msg_test
+
+production:
+  <<: *default
+  database: fast_msg_production
+  username: <%= ENV['FAST_MSG_DATABASE_USERNAME'] || 'root' %>
+  password: <%= ENV['FAST_MSG_DATABASE_PASSWORD'] || 'root123' %>
+  host: <%= ENV['DB_HOST'] || 'db' %>
