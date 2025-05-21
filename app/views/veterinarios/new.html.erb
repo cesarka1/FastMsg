@@ -1,11 +1,16 @@
-<% content_for :title, "New veterinario" %>
+<% content_for :title, "Novo Veterinário" %>
 
-<h1>New veterinario</h1>
-
-<%= render "form", veterinario: @veterinario %>
-
-<br>
-
-<div>
-  <%= link_to "Back to veterinarios", veterinarios_path %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h1 class="h3 mb-0">Novo Veterinário</h1>
+        </div>
+        <div class="card-body">
+          <%= render "form", veterinario: @veterinario %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,9 +1,8 @@
-<%= form_with(model: veterinario) do |form| %>
+<%= form_with(model: veterinario, class: "needs-validation") do |form| %>
   <% if veterinario.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(veterinario.errors.count, "error") %> prohibited this veterinario from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(veterinario.errors.count, "erro") %> impediram que este veterinário fosse salvo:</h5>
+      <ul class="mb-0">
         <% veterinario.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,22 +10,30 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
+  <div class="row g-3">
+    <div class="col-md-6 mb-3">
+      <%= form.label :nome, class: "form-label" %>
+      <%= form.text_field :nome, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :especialidade, style: "display: block" %>
-    <%= form.text_field :especialidade %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :especialidade, class: "form-label" %>
+      <%= form.select :especialidade, 
+            ["Clínico Geral", "Cirurgião", "Dermatologia", "Cardiologia", "Oftalmologia", "Ortopedia", "Anestesiologia", "Oncologia", "Neurologia", "Comportamento Animal", "Medicina de Animais Silvestres", "Odontologia Veterinária"],
+            { include_blank: "Selecione a especialidade" },
+            class: "form-select" %>
+    </div>
 
-  <div>
-    <%= form.label :telefone, style: "display: block" %>
-    <%= form.text_field :telefone %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :telefone, class: "form-label" %>
+      <%= form.text_field :telefone, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="col-12">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= form.submit "Salvar", class: "btn btn-primary" %>
+        <%= link_to "Cancelar", veterinarios_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
   </div>
 <% end %>

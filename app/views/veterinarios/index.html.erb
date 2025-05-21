@@ -1,16 +1,54 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Veterinários" %>
 
-<% content_for :title, "Veterinarios" %>
-
-<h1>Veterinarios</h1>
-
-<div id="veterinarios">
-  <% @veterinarios.each do |veterinario| %>
-    <%= render veterinario %>
-    <p>
-      <%= link_to "Show this veterinario", veterinario %>
-    </p>
+<div class="container mt-4">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   <% end %>
-</div>
 
-<%= link_to "New veterinario", new_veterinario_path %>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Veterinários</h1>
+    <%= link_to "Novo Veterinário", new_veterinario_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">CRMV</th>
+              <th scope="col">Especialidade</th>
+              <th scope="col">Telefone</th>
+              <th scope="col" class="text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @veterinarios.any? %>
+              <% @veterinarios.each do |veterinario| %>
+                <tr>
+                  <td><%= veterinario.try(:nome) || "Nome não disponível" %></td>
+                  <td><%= veterinario.try(:crmv) || "CRMV não informado" %></td>
+                  <td><%= veterinario.try(:especialidade) || "Especialidade não informada" %></td>
+                  <td><%= veterinario.try(:telefone) || "Telefone não informado" %></td>
+                  <td class="text-center">
+                    <%= link_to "Ver", veterinario, class: "btn btn-sm btn-info text-white" %>
+                    <%= link_to "Editar", edit_veterinario_path(veterinario), class: "btn btn-sm btn-warning" if defined?(edit_veterinario_path) %>
+                    <%= button_to "Excluir", veterinario, method: :delete, class: "btn btn-sm btn-danger d-inline", form: { style: 'display: inline', data: { turbo_confirm: 'Tem certeza?' } } if veterinario.respond_to?(:destroy) %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="6" class="text-center py-3">Nenhum veterinário cadastrado.</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

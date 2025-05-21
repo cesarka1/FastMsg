@@ -1,9 +1,8 @@
-<%= form_with(model: tutor) do |form| %>
+<%= form_with(model: tutor, class: "needs-validation") do |form| %>
   <% if tutor.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(tutor.errors.count, "erro") %> impediram que este tutor fosse salvo:</h5>
+      <ul class="mb-0">
         <% tutor.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,32 +10,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
+  <div class="row g-3">
+    <div class="col-md-6 mb-3">
+      <%= form.label :nome, class: "form-label" %>
+      <%= form.text_field :nome, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :telefone, style: "display: block" %>
-    <%= form.text_field :telefone %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :telefone, class: "form-label" %>
+      <%= form.text_field :telefone, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :cpf, style: "display: block" %>
-    <%= form.text_field :cpf %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :cpf, class: "form-label" %>
+      <%= form.text_field :cpf, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :rg, style: "display: block" %>
-    <%= form.text_field :rg %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :rg, class: "form-label" %>
+      <%= form.text_field :rg, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="col-12">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= form.submit "Salvar", class: "btn btn-primary" %>
+        <%= link_to "Cancelar", tutors_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
   </div>
 <% end %>
