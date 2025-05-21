@@ -17,7 +17,6 @@ class PetsTest < ApplicationSystemTestCase
     fill_in "Especie", with: @pet.especie
     fill_in "Nome", with: @pet.nome
     fill_in "Tutor", with: @pet.tutor_id
-    fill_in "Veterinario", with: @pet.veterinario_id
     click_on "Create Pet"
 
     assert_text "Pet was successfully created"
@@ -31,7 +30,6 @@ class PetsTest < ApplicationSystemTestCase
     fill_in "Especie", with: @pet.especie
     fill_in "Nome", with: @pet.nome
     fill_in "Tutor", with: @pet.tutor_id
-    fill_in "Veterinario", with: @pet.veterinario_id
     click_on "Update Pet"
 
     assert_text "Pet was successfully updated"

@@ -65,6 +65,6 @@ class PetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pet_params
-      params.expect(pet: [ :nome, :especie, :tutor_id, :veterinario_id ])
+      params.expect(pet: [ :nome, :especie, :tutor_id ])
     end
 end
