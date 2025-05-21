@@ -1,9 +1,8 @@
-<%= form_with(model: pet) do |form| %>
+<%= form_with(model: pet, class: "needs-validation") do |form| %>
   <% if pet.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(pet.errors.count, "erro") %> impediram que este pet fosse salvo:</h5>
+      <ul class="mb-0">
         <% pet.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,27 +10,56 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
+  <div class="row g-3">
+    <div class="col-md-6 mb-3">
+      <%= form.label :nome, class: "form-label" %>
+      <%= form.text_field :nome, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :especie, style: "display: block" %>
-    <%= form.text_field :especie %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :especie, "Espécie", class: "form-label" %>
+      <%= form.select :especie, 
+          [["Cachorro", "Cachorro"], ["Gato", "Gato"], ["Ave", "Ave"], ["Réptil", "Réptil"], ["Outro", "Outro"]], 
+          { include_blank: "Selecione a espécie" }, 
+          { class: "form-select", required: true } %>
+    </div>
 
-  <div>
-    <%= form.label :tutor_id, style: "display: block" %>
-    <%= form.text_field :tutor_id %>
-  </div>
+   <!-- <div class="col-md-6 mb-3">
+      <%= form.label :raca, "Raça", class: "form-label" %>
+      <%= form.text_field :raca, class: "form-control" %>
+    </div> -->
 
-  <div>
-    <%= form.label :veterinario_id, style: "display: block" %>
-    <%= form.text_field :veterinario_id %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :data_nascimento, "Data de Nascimento", class: "form-label" %>
+      <%= form.date_field :data_nascimento, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="col-md-6 mb-3">
+      <%= form.label :tutor_id, "Tutor", class: "form-label" %>
+      <%= form.collection_select :tutor_id, 
+          Tutor.all.order(:nome), :id, :nome, 
+          { include_blank: "Selecione o tutor" }, 
+          { class: "form-select", required: true } %>
+    </div>
+
+    <!-- <div class="col-md-6 mb-3">
+      <%= form.label :veterinario_id, "Veterinário", class: "form-label" %>
+      <%= form.collection_select :veterinario_id, 
+          Veterinario.all.order(:nome), :id, :nome, 
+          { include_blank: "Selecione o veterinário" }, 
+          { class: "form-select" } %>
+    </div> -->
+
+    <div class="col-12 mb-3">
+      <%= form.label :observacoes, "Observações", class: "form-label" %>
+      <%= form.text_area :observacoes, class: "form-control", rows: 3 %>
+    </div>
+
+    <div class="col-12">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= form.submit "Salvar", class: "btn btn-primary" %>
+        <%= link_to "Cancelar", pets_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
   </div>
 <% end %>
