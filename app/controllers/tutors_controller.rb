@@ -25,7 +25,8 @@ class TutorsController < ApplicationController
 
     respond_to do |format|
       if @tutor.save
-        format.html { redirect_to @tutor, notice: "Tutor was successfully created." }
+        format.turbo_stream
+        format.html { redirect_to @tutor, notice: "Tutor criado com sucesso" }
         format.json { render :show, status: :created, location: @tutor }
       else
         format.html { render :new, status: :unprocessable_entity }

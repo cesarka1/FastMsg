@@ -1,11 +1,21 @@
-<% content_for :title, "New tutor" %>
 
-<h1>New tutor</h1>
-
-<%= render "form", tutor: @tutor %>
-
-<br>
-
-<div>
-  <%= link_to "Back to tutors", tutors_path %>
-</div>
+<% content_for :title, "Novo Tutor" %>
+  <%= turbo_frame_tag @tutor do %>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h1 class="h3 mb-0">Novo Tutores</h1>
+          </div>
+          <div class="card-body">
+            
+            <%= render "form", tutor: @tutor %>
+      
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
