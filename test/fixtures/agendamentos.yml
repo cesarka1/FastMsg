@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_hora: 2025-05-22 22:17:59
+  observacoes: MyText
+  pet: one
+  veterinario: one
+
+two:
+  data_hora: 2025-05-22 22:17:59
+  observacoes: MyText
+  pet: two
+  veterinario: two

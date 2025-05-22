@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_19_195300) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_22_221759) do
+  create_table "agendamentos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "data_hora"
+    t.text "observacoes"
+    t.bigint "pet_id", null: false
+    t.bigint "veterinario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_agendamentos_on_pet_id"
+    t.index ["veterinario_id"], name: "index_agendamentos_on_veterinario_id"
+  end
+
   create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nome"
     t.string "especie"
@@ -38,5 +49,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_19_195300) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "agendamentos", "pets"
+  add_foreign_key "agendamentos", "veterinarios"
   add_foreign_key "pets", "tutors"
 end
