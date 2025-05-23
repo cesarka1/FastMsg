@@ -1,17 +1,19 @@
-<% content_for :title, "Novo Pet" %>
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          <h1 class="h3 mb-0">Novo Pet</h1>
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal fade" id="modalFrame" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" id="modalContent">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">
+            <i class="fas fa-paw me-2"></i>Novo Pet
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
-        <div class="card-body">
+        
+        <div class="modal-body">
           <%= render "form", pet: @pet %>
         </div>
-      
       </div>
     </div>
   </div>
-</div>
+<% end %>

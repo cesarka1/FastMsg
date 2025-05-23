@@ -24,11 +24,6 @@
           { class: "form-select", required: true } %>
     </div>
 
-   <!-- <div class="col-md-6 mb-3">
-      <%= form.label :raca, "Raça", class: "form-label" %>
-      <%= form.text_field :raca, class: "form-control" %>
-    </div> -->
-
     <div class="col-md-6 mb-3">
       <%= form.label :data_nascimento, "Data de Nascimento", class: "form-label" %>
       <%= form.date_field :data_nascimento, class: "form-control" %>
@@ -42,24 +37,16 @@
           { class: "form-select", required: true } %>
     </div>
 
-    <!-- <div class="col-md-6 mb-3">
-      <%= form.label :veterinario_id, "Veterinário", class: "form-label" %>
-      <%= form.collection_select :veterinario_id, 
-          Veterinario.all.order(:nome), :id, :nome, 
-          { include_blank: "Selecione o veterinário" }, 
-          { class: "form-select" } %>
-    </div> -->
-
     <div class="col-12 mb-3">
       <%= form.label :observacoes, "Observações", class: "form-label" %>
       <%= form.text_area :observacoes, class: "form-control", rows: 3 %>
     </div>
 
-    <div class="col-12">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <%= form.submit "Salvar", class: "btn btn-primary" %>
-        <%= link_to "Cancelar", pets_path, class: "btn btn-outline-secondary" %>
-      </div>
-    </div>
+  
+    
   </div>
+  <div class="modal-footer">
+  <%= form.submit "Salvar", class: "btn btn-primary" %>
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+</div>
 <% end %>

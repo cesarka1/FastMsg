@@ -25,9 +25,11 @@ class PetsController < ApplicationController
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: "Pet was successfully created." }
+        format.turbo_stream
+        format.html { redirect_to pets_path, notice: "Pet criado com sucesso." }
         format.json { render :show, status: :created, location: @pet }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "pets/form", locals: { pet: @pet }) }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @pet.errors, status: :unprocessable_entity }
       end
@@ -38,9 +40,11 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: "Pet was successfully updated." }
+        format.turbo_stream
+        format.html { redirect_to @pet, notice: "Pet atualizado com sucesso!" }
         format.json { render :show, status: :ok, location: @pet }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "pets/form", locals: { pet: @pet }) }
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @pet.errors, status: :unprocessable_entity }
       end
@@ -52,7 +56,7 @@ class PetsController < ApplicationController
     @pet.destroy!
 
     respond_to do |format|
-      format.html { redirect_to pets_path, status: :see_other, notice: "Pet was successfully destroyed." }
+      format.html { redirect_to pets_path, status: :see_other, notice: "Pet deletado com sucesso" }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,9 @@
+<script>
+  const modalElement = document.getElementById("modalFrame");
+  if (modalElement) {
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    if (modal) { modal.hide(); }
+  }
+</script>
+
+<%= turbo_stream.update "modal", "" %>

@@ -1,12 +1,19 @@
-<% content_for :title, "Editing pet" %>
 
-<h1>Editing pet</h1>
-
-<%= render "form", pet: @pet %>
-
-<br>
-
-<div>
-  <%= link_to "Show this pet", @pet %> |
-  <%= link_to "Back to pets", pets_path %>
-</div>
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal fade" id="modalFrame" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" id="modalContent">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">
+            <i class="fas fa-paw me-2"></i>Editar Pet
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        
+        <div class="modal-body">
+          <%= render "form", pet: @pet %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

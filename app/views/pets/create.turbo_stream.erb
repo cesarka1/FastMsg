@@ -1,0 +1,3 @@
+<%= turbo_stream.append "modal", partial: "shared/close_modal" %>
+
+<%= turbo_stream.append "pets", partial: "pets/pet", locals: { pet: @pet, show_actions: true } %>

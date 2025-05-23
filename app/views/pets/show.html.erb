@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @pet %>
+
 
 <div>
   <%= link_to "Edit this pet", edit_pet_path(@pet) %> |
@@ -8,3 +8,24 @@
 
   <%= button_to "Destroy this pet", @pet, method: :delete %>
 </div>
+
+
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal fade" id="modalFrame" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" id="modalContent">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">
+            <i class="fas fa-paw me-2"></i>Info Pet
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        
+        <div class="modal-body">
+          <%= render @pet %>
+          <%# <%= render "form", pet: @pet %> 
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
