@@ -1,15 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @tutor %>
-
-<div>
-  <%= link_to "Edit this tutor", edit_tutor_path(@tutor) %> |
-  <%= link_to "Back to tutors", tutors_path %>
-
-  <%= button_to "Destroy this tutor", @tutor, method: :delete %>
-</div>
-
-
 <%= render "shared/modal", 
     title: "Editar Tutor", 
     icon: "fas fa-paw",

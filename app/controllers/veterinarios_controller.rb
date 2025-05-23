@@ -39,6 +39,7 @@ class VeterinariosController < ApplicationController
   def update
     respond_to do |format|
       if @veterinario.update(veterinario_params)
+        format.turbo_stream
         format.html { redirect_to @veterinario, notice: "Veterinario was successfully updated." }
         format.json { render :show, status: :ok, location: @veterinario }
       else

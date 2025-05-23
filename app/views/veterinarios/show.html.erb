@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @veterinario %>
-
-<div>
-  <%= link_to "Edit this veterinario", edit_veterinario_path(@veterinario) %> |
-  <%= link_to "Back to veterinarios", veterinarios_path %>
-
-  <%= button_to "Destroy this veterinario", @veterinario, method: :delete %>
-</div>
+<%= render "shared/modal", 
+    title: "Ver veterinario", 
+    icon: "fas fa-paw",
+    modal_size: "modal-lg",
+    content: render(@veterinario) 
+%>

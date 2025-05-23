@@ -27,7 +27,7 @@
                <tbody id="tutors">
                   <% if @tutors.any? %>
                   <% @tutors.each do |tutor| %>
-                  <%= render partial: "tutors/tutor", locals: { tutor: tutor, show_actions: true } %>
+                     <%= render partial: "tutors/tutor", locals: { tutor: tutor, show_actions: true } %>
                   <% end %>
                   <%#= render @tutors %>         
                   <% else %>

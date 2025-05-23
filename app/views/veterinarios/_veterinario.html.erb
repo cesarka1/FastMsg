@@ -1,17 +1,13 @@
-<div id="<%= dom_id veterinario %>">
-  <p>
-    <strong>Nome:</strong>
-    <%= veterinario.nome %>
-  </p>
-
-  <p>
-    <strong>Especialidade:</strong>
-    <%= veterinario.especialidade %>
-  </p>
-
-  <p>
-    <strong>Telefone:</strong>
-    <%= veterinario.telefone %>
-  </p>
-
-</div>
+<tr id="<%= dom_id(veterinario) %>">
+  <td><%= veterinario.nome %></td>
+   <td><%= veterinario.try(:crmv) || "CRMV não informado" %></td>
+  <td><%= veterinario.especialidade %></td>
+  <td><%= veterinario.telefone %></td>
+  <% if local_assigns[:show_actions] %>
+     <td class="text-center">
+      <%= link_to "Ver", veterinario_path(veterinario), data: { turbo_frame: "modal" },  class: "btn btn-info btn-sm" %>
+      <%= link_to "Editar", edit_veterinario_path(veterinario), data: { turbo_frame: "modal" },  class: "btn btn-warning btn-sm" %>
+      <%= link_to "Excluir", veterinario_path(veterinario), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
+    </td>
+  <% end %>
+</tr>

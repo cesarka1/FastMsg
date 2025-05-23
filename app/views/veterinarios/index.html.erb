@@ -10,7 +10,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="mb-0">Veterinários</h1>
-    <%= link_to "Novo Veterinário", new_veterinario_path, class: "btn btn-primary" %>
+    <%= link_to "Novo Veterinário", new_veterinario_path, data: {turbo_frame: "modal"}, class: "btn btn-primary" %>
   </div>
 
   <div class="card">
@@ -26,21 +26,11 @@
               <th scope="col" class="text-center">Ações</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="veterinarios">
             <% if @veterinarios.any? %>
               <% @veterinarios.each do |veterinario| %>
-                <tr>
-                  <td><%= veterinario.try(:nome) || "Nome não disponível" %></td>
-                  <td><%= veterinario.try(:crmv) || "CRMV não informado" %></td>
-                  <td><%= veterinario.try(:especialidade) || "Especialidade não informada" %></td>
-                  <td><%= veterinario.try(:telefone) || "Telefone não informado" %></td>
-                  <td class="text-center">
-                    <%= link_to "Ver", veterinario, class: "btn btn-sm btn-info text-white" %>
-                    <%= link_to "Editar", edit_veterinario_path(veterinario), class: "btn btn-sm btn-warning" if defined?(edit_veterinario_path) %>
-                    <%= button_to "Excluir", veterinario, method: :delete, class: "btn btn-sm btn-danger d-inline", form: { style: 'display: inline', data: { turbo_confirm: 'Tem certeza?' } } if veterinario.respond_to?(:destroy) %>
-                  </td>
-                </tr>
-              <% end %>
+                   <%= render partial: "veterinarios/veterinario", locals: { veterinario: veterinario, show_actions: true } %>
+               <% end %> 
             <% else %>
               <tr>
                 <td colspan="6" class="text-center py-3">Nenhum veterinário cadastrado.</td>
