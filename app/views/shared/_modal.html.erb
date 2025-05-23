@@ -1,19 +1,25 @@
-
 <%= turbo_frame_tag "modal" do %>
   <div class="modal fade" id="modalFrame" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog <%= modal_size %>">
       <div class="modal-content" id="modalContent">
         <div class="modal-header bg-primary text-white">
           <h5 class="modal-title">
-            <i class="fas fa-paw me-2"></i>Editar Pet
+            <% if icon.present? %>
+              <i class="<%= icon %> me-2"></i>
+            <% end %>
+            <%= title %>
           </h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
         
         <div class="modal-body">
-          <%= render "form", pet: @pet %>
+          <%= content %>
         </div>
+        
+        
       </div>
     </div>
   </div>
 <% end %>
+
+

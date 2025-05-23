@@ -1,9 +1,22 @@
 <script>
-  const modalElement = document.getElementById("modalFrame");
-  if (modalElement) {
-    const modal = bootstrap.Modal.getInstance(modalElement);
-    if (modal) { modal.hide(); }
-  }
+  (function() {
+    const modalElement = document.getElementById("modalFrame");
+    const modalFrame = document.getElementById("modal");
+    if (modalElement) {
+      let modal = bootstrap.Modal.getInstance(modalElement);
+      if (!modal) {
+        modal = new bootstrap.Modal(modalElement);
+      }
+      modalElement.addEventListener('hidden.bs.modal', () => {
+        if (modalFrame) {
+          modalFrame.innerHTML = "";
+        }
+      }, { once: true });
+      modal.hide();
+    } else if (modalFrame) {
+      // Se não existe modalElement, limpa o frame imediatamente
+      modalFrame.innerHTML = "";
+    }
+  })();
 </script>
 
-<%= turbo_stream.update "modal", "" %>

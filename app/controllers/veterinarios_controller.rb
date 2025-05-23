@@ -25,7 +25,7 @@ class VeterinariosController < ApplicationController
 
     respond_to do |format|
       if @veterinario.save
-         format.turbo_stream
+        format.turbo_stream
         format.html { redirect_to @veterinario, notice: "Veterinario was successfully created." }
         format.json { render :show, status: :created, location: @veterinario }
       else

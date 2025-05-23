@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails";
 // import "modal_controller";
 // import "bootstrap"
 // import "./controllers"
+// import "controllers";
 
 document.addEventListener("turbo:frame-load", (event) => {
   if (event.target.id === "modal") {
