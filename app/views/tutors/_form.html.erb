@@ -31,16 +31,14 @@
       <%= form.text_field :cpf, class: "form-control", required: true %>
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-12 mb-3">
       <%= form.label :rg, class: "form-label" %>
       <%= form.text_field :rg, class: "form-control" %>
     </div>
-
-    <div class="col-12">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <%= form.submit "Salvar", class: "btn btn-primary" %>
-        <%= link_to "Cancelar", tutors_path, class: "btn btn-outline-secondary" %>
-      </div>
-    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
   </div>
 <% end %>

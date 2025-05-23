@@ -4,8 +4,8 @@
   <td><%= pet.try(:tutor).try(:nome) || "Tutor não associado" %></td>
   <% if local_assigns[:show_actions] %>
     <td class="text-center">
-      <%= link_to "Ver", pet, data: { turbo_frame: "modal" }, class: "btn btn-sm btn-info" %>
-      <%= link_to "Editar", edit_pet_path(pet), data: { turbo_frame: "modal" }, class: "btn btn-sm btn-warning" %>
+      <%= link_to "Ver", pet, data: { turbo_frame: "modal" }, class: "btn btn-info btn-sm" %>
+<%= link_to "Editar", edit_pet_path(pet), data: { turbo_frame: "modal" }, class: "btn btn-warning btn-sm" %>
       <%= button_to "Excluir", pet, method: :delete, class: "btn btn-sm btn-danger d-inline", form: { style: 'display: inline', data: { turbo_confirm: 'Tem certeza?' } } %>
     </td>
   <% end %>

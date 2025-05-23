@@ -29,6 +29,7 @@ class TutorsController < ApplicationController
         format.html { redirect_to @tutor, notice: "Tutor criado com sucesso" }
         format.json { render :show, status: :created, location: @tutor }
       else
+         format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "tutors/form", locals: { tutor: @tutor }) }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tutor.errors, status: :unprocessable_entity }
       end
@@ -39,9 +40,11 @@ class TutorsController < ApplicationController
   def update
     respond_to do |format|
       if @tutor.update(tutor_params)
+        format.turbo_stream
         format.html { redirect_to @tutor, notice: "Tutor was successfully updated." }
         format.json { render :show, status: :ok, location: @tutor }
       else
+         format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "tutors/form", locals: { tutor: @tutor }) }  
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @tutor.errors, status: :unprocessable_entity }
       end

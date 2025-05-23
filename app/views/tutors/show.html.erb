@@ -8,3 +8,11 @@
 
   <%= button_to "Destroy this tutor", @tutor, method: :delete %>
 </div>
+
+
+<%= render "shared/modal", 
+    title: "Editar Tutor", 
+    icon: "fas fa-paw",
+    modal_size: "modal-lg",
+    content: render(@tutor) 
+%>
