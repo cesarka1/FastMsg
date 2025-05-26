@@ -22,18 +22,18 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <%= form.label :email, class: "form-label" %>
-      <%= form.email_field :email, class: "form-control", required: true %>
-    </div>
-
-    <div class="col-md-6 mb-3">
       <%= form.label :cpf, class: "form-label" %>
       <%= form.text_field :cpf, class: "form-control", required: true %>
     </div>
 
-    <div class="col-12 mb-3">
+    <div class="col-md-6 mb-3">
       <%= form.label :rg, class: "form-label" %>
       <%= form.text_field :rg, class: "form-control" %>
+    </div>
+
+    <div class="col-12 mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-control", required: true %>
     </div>
   </div>
   

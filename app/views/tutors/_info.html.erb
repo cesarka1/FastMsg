@@ -1,0 +1,23 @@
+<p>
+  <strong>Nome:</strong>
+  <%= tutor.try(:nome) || "Nome não disponível" %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= tutor.try(:telefone) || "Telefone não disponível" %>
+</p>
+<p>
+  <strong>E-mail:</strong>
+  <%= tutor.try(:email) || "E-mail não disponível" %>
+</p>
+
+<p>
+  <strong>CPF:</strong>
+  <%= tutor.try(:cpf) || "CPF não informado" %>
+</p>
+
+<p>
+  <strong>RG:</strong>
+  <%= tutor.try(:rg) || "RG não informado" %>
+</p>

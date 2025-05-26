@@ -26,7 +26,7 @@ class TutorsController < ApplicationController
     respond_to do |format|
       if @tutor.save
         format.turbo_stream
-        format.html { redirect_to @tutor, notice: "Tutor criado com sucesso" }
+        format.html { redirect_to @tutor, notice: "Tutor criado com sucesso!" }
         format.json { render :show, status: :created, location: @tutor }
       else
          format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "tutors/form", locals: { tutor: @tutor }) }
@@ -41,7 +41,7 @@ class TutorsController < ApplicationController
     respond_to do |format|
       if @tutor.update(tutor_params)
         format.turbo_stream
-        format.html { redirect_to @tutor, notice: "Tutor was successfully updated." }
+        format.html { redirect_to @tutor, notice: "Tutor atualizado com sucesso!" }
         format.json { render :show, status: :ok, location: @tutor }
       else
          format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "tutors/form", locals: { tutor: @tutor }) }  
@@ -56,7 +56,7 @@ class TutorsController < ApplicationController
     @tutor.destroy!
 
     respond_to do |format|
-      format.html { redirect_to tutors_path, status: :see_other, notice: "Tutor was successfully destroyed." }
+      format.html { redirect_to tutors_path, status: :see_other, notice: "Tutor apagado com sucesso!" }
       format.json { head :no_content }
     end
   end

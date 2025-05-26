@@ -1,3 +1,3 @@
 class Tutor < ApplicationRecord
-   has_many :pets, dependent: :nullify
+   has_many :pets, dependent: :destroy
 end

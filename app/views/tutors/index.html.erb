@@ -28,10 +28,9 @@
                   <% if @tutors.any? %>
                   <% @tutors.each do |tutor| %>
                      <%= render partial: "tutors/tutor", locals: { tutor: tutor, show_actions: true } %>
-                  <% end %>
-                  <%#= render @tutors %>         
+                  <% end %>     
                   <% else %>
-                  <tr>
+                  <tr id="no-tutors">
                      <td colspan="4" class="text-center py-3">Nenhum tutor cadastrado.</td>
                   </tr>
                   <% end %>

@@ -1,5 +1,3 @@
-<%#= turbo_stream.prepend "tutors", partial: "tutors/tutor", locals: { tutor: @tutor } %>
-<%#= turbo_stream.update Tutor.new, "" %> 
-
 <%= turbo_stream.append "modal", partial: "shared/close_modal" %>
+<%= turbo_stream.remove "no-tutors" %>
 <%= turbo_stream.append "tutors", partial: "tutors/tutor", locals: { tutor: @tutor, show_actions: true } %>
