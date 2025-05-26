@@ -8,7 +8,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="mb-0">Agendamento</h1>
-    <%= link_to "Novo Agendamento", new_agendamento_path, class: "btn btn-primary", data:{ turbo_frame: dom_id(Agendamento.new)} %>
+    <%= link_to "Novo Agendamento", new_agendamento_path, data: { turbo_frame: "modal" }, class: "btn btn-primary" %>
   </div>
 
   <%= turbo_frame_tag Agendamento.new %>
@@ -20,18 +20,21 @@
           <table class="table table-hover table-striped mb-0">
             <thead class="table-light">
               <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">CPF</th>
+                <th scope="col">Veterinario</th>
+                <th scope="col">Pet</th>
+                <th scope="col">Tutor</th>
+                 <th scope="col">Data e Hora </th>
                 <th scope="col" class="text-center">Ações</th>
               </tr>
             </thead>
-            <tbody id="Agendamentos">
+            <tbody id="agendamentos">
               <% if @agendamentos.any? %>
-                  <%= render @agendamentos %>         
+                <% @agendamentos.each do |agendamento| %>
+                  <%= render partial: "agendamentos/agendamento", locals: { agendamento: agendamento, show_actions: true } %>
+                <% end %>       
               <% else %>
-                <tr>
-                  <td colspan="4" class="text-center py-3">Nenhum Agendamento cadastrado.</td>
+                <tr id="no-agendamentos">
+                  <td colspan="5" class="text-center py-3">Nenhum Agendamento cadastrado.</td>
                 </tr>
               <% end %>
             </tbody>

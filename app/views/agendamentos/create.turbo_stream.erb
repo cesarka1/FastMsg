@@ -1,0 +1,3 @@
+<%= turbo_stream.append "modal", partial: "shared/close_modal" %>
+<%= turbo_stream.remove "no-agendamentos" %>
+<%= turbo_stream.append "agendamentos", partial: "agendamentos/agendamento", locals: { agendamento: @agendamento, show_actions: true } %>

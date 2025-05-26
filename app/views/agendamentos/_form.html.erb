@@ -1,9 +1,8 @@
-<%= form_with(model: agendamento) do |form| %>
+<%= form_with(model: agendamento, class: "needs-validation") do |form| %>
   <% if agendamento.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(agendamento.errors.count, "error") %> prohibited this agendamento from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(agendamento.errors.count, "erro") %> impediram que este agendamento fosse salvo:</h5>
+      <ul class="mb-0">
         <% agendamento.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,27 +10,40 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :data_hora, style: "display: block" %>
-    <%= form.datetime_field :data_hora %>
-  </div>
+  <div class="row g-3">
+    <div class="col-md-6 mb-3">
+      <%= form.label :data_hora, "Data e Hora", class: "form-label" %>
+      <%= form.datetime_local_field :data_hora, class: "form-control", required: true %>
+    </div>
 
-  <div>
-    <%= form.label :observacoes, style: "display: block" %>
-    <%= form.textarea :observacoes %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :pet_id, "Pet", class: "form-label" %>
+      <%= form.collection_select :pet_id, 
+          Pet.joins(:tutor).order('tutors.nome', 'pets.nome'), 
+          :id, 
+          :nome, 
+          { include_blank: "Selecione o pet" }, 
+          { class: "form-select", required: true } %>
+    </div>
 
-  <div>
-    <%= form.label :pet_id, style: "display: block" %>
-    <%= form.text_field :pet_id %>
-  </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :veterinario_id, "Veterinário", class: "form-label" %>
+      <%= form.collection_select :veterinario_id, 
+          Veterinario.all.order(:nome), 
+          :id, 
+          :nome, 
+          { include_blank: "Selecione o veterinário" }, 
+          { class: "form-select", required: true } %>
+    </div>
 
-  <div>
-    <%= form.label :veterinario_id, style: "display: block" %>
-    <%= form.text_field :veterinario_id %>
+    <div class="col-12 mb-3">
+      <%= form.label :observacoes, "Observações", class: "form-label" %>
+      <%= form.text_area :observacoes, class: "form-control", rows: 3 %>
+    </div>
   </div>
-
-  <div>
-    <%= form.submit %>
+  
+  <div class="modal-footer">
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
   </div>
 <% end %>

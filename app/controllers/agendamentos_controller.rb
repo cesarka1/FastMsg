@@ -25,6 +25,7 @@ class AgendamentosController < ApplicationController
 
     respond_to do |format|
       if @agendamento.save
+        format.turbo_stream
         format.html { redirect_to @agendamento, notice: "Agendamento was successfully created." }
         format.json { render :show, status: :created, location: @agendamento }
       else
@@ -38,6 +39,7 @@ class AgendamentosController < ApplicationController
   def update
     respond_to do |format|
       if @agendamento.update(agendamento_params)
+        format.turbo_stream
         format.html { redirect_to @agendamento, notice: "Agendamento was successfully updated." }
         format.json { render :show, status: :ok, location: @agendamento }
       else

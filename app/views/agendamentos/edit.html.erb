@@ -1,12 +1,6 @@
-<% content_for :title, "Editing agendamento" %>
-
-<h1>Editing agendamento</h1>
-
-<%= render "form", agendamento: @agendamento %>
-
-<br>
-
-<div>
-  <%= link_to "Show this agendamento", @agendamento %> |
-  <%= link_to "Back to agendamentos", agendamentos_path %>
-</div>
+<%= render "shared/modal", 
+    title: "Editar Agendamento", 
+    icon: "fas fa-paw",
+    modal_size: "modal-lg",
+    content: render("form", agendamento: @agendamento) 
+%>

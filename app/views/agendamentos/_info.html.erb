@@ -1,0 +1,24 @@
+<p>
+  <strong>Veterinário:</strong>
+  <%= agendamento.try(:veterinario).try(:nome) || "Veterinário não associado" %>
+</p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= agendamento.try(:pet).try(:nome) || "Pet não associado" %>
+</p>
+
+<p>
+  <strong>Tutor:</strong>
+  <%= agendamento.try(:pet).try(:tutor).try(:nome) || "Tutor não associado" %>
+</p>
+
+<p>
+  <strong>Data e Hora:</strong>
+  <%= agendamento.try(:data_hora)&.strftime("%d/%m/%Y às %H:%M") || "Horário não disponível" %>
+</p>
+
+<p>
+  <strong>Observações:</strong>
+  <%= agendamento.try(:observacoes) || "Nenhuma observação" %>
+</p>
