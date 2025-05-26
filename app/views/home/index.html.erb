@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>FastMsg - Sistema de Gestão Veterinária</title>
+      <link href="/assets/home.css" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container">
+         <div class="row mb-5">
+            <div class="col-12 text-center">
+               <h1 class="hero-text display-4 fw-bold mb-3">
+                  <i class="fas fa-bolt text-warning me-3"></i>
+                  FastMsg
+               </h1>
+               <p class="hero-text lead mb-4">Sistema de Gestão Veterinária Completo</p>
+               <p class="hero-text">Gerencie tutores, pets, veterinários e agendamentos de forma rápida e eficiente</p>
+            </div>
+         </div>
+         <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+               <div class="card nav-card card-hover" onclick="window.location.href='/tutors'">
+                  <div class="card-body">
+                     <div class="icon-circle bg-gradient-primary">
+                        <i class="fas fa-users"></i>
+                     </div>
+                     <h5>Tutores</h5>
+                     <p>Cadastro e gerenciamento de tutores responsáveis pelos pets</p>
+                     <div class="mt-3">
+                        <span class="badge bg-primary rounded-pill">Gerenciar</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+               <div class="card nav-card card-hover" onclick="window.location.href='/pets'">
+                  <div class="card-body">
+                     <div class="icon-circle bg-gradient-success">
+                        <i class="fas fa-paw"></i>
+                     </div>
+                     <h5>Pets</h5>
+                     <p>Cadastro completo de animais com histórico médico e informações</p>
+                     <div class="mt-3">
+                        <span class="badge bg-success rounded-pill">Gerenciar</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+               <div class="card nav-card card-hover" onclick="window.location.href='/veterinarios'">
+                  <div class="card-body">
+                     <div class="icon-circle bg-gradient-info">
+                        <i class="fas fa-user-md"></i>
+                     </div>
+                     <h5>Veterinários</h5>
+                     <p>Cadastro de profissionais veterinários e suas especialidades</p>
+                     <div class="mt-3">
+                        <span class="badge bg-info rounded-pill">Gerenciar</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+               <div class="card nav-card card-hover" onclick="window.location.href='/agendamentos'">
+                  <div class="card-body">
+                     <div class="icon-circle bg-gradient-warning">
+                        <i class="fas fa-calendar-alt"></i>
+                     </div>
+                     <h5>Agendamentos</h5>
+                     <p>Controle de consultas, procedimentos e agenda veterinária</p>
+                     <div class="mt-3">
+                        <span class="badge bg-warning rounded-pill">Gerenciar</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+      <script>
+         document.querySelectorAll('.nav-card').forEach(card => {
+             card.addEventListener('mouseenter', function() {
+                 this.style.transform = 'translateY(-10px)';
+             });
+             
+             card.addEventListener('mouseleave', function() {
+                 this.style.transform = 'translateY(0)';
+             });
+         });
+      </script>
+   </body>
+</html>
