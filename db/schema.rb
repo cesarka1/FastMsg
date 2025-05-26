@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_22_221759) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_25_221820) do
   create_table "agendamentos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "data_hora"
     t.text "observacoes"
@@ -28,6 +28,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_221759) do
     t.bigint "tutor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "observacoes"
+    t.date "data_nascimento"
     t.index ["tutor_id"], name: "index_pets_on_tutor_id"
   end
 
@@ -47,6 +49,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_221759) do
     t.string "telefone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "crmv"
   end
 
   add_foreign_key "agendamentos", "pets"

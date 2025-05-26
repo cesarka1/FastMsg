@@ -1,0 +1,22 @@
+<p>
+  <strong>Nome:</strong>
+  <%= pet.try(:nome) || "Nome não disponível" %>
+</p>
+
+<p>
+  <strong>Espécie:</strong>
+  <%= pet.try(:especie) || "Espécie não informada" %>
+</p>
+
+<p>
+  <strong>Tutor:</strong>
+  <%= pet.try(:tutor).try(:nome) || "Tutor não associado" %>
+</p>
+<p>
+  <strong>Data de Nascimento:</strong>
+  <%= pet.try(:data_nascimento)  || "Data de nassicmento não associado" %>
+</p>
+<p>
+  <strong>Observações:</strong>
+  <%= pet.try(:observacoes)  || "Observações não associado" %>
+</p>
