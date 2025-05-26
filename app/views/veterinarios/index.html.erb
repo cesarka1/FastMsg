@@ -32,7 +32,7 @@
                    <%= render partial: "veterinarios/veterinario", locals: { veterinario: veterinario, show_actions: true } %>
                <% end %> 
             <% else %>
-              <tr>
+              <tr id="no-veterinarios">
                 <td colspan="6" class="text-center py-3">Nenhum veterinário cadastrado.</td>
               </tr>
             <% end %>

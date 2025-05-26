@@ -1,0 +1,19 @@
+<p>
+  <strong>Nome:</strong>
+  <%= veterinario.try(:nome) || "Nome não disponível" %>
+</p>
+
+<p>
+  <strong>CRMV:</strong>
+  <%= veterinario.try(:crmv) || "CRMV não informado" %>
+</p>
+
+<p>
+  <strong>Especialidade:</strong>
+  <%= veterinario.try(:especialidade) || "Especialidade não informada" %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= veterinario.try(:telefone) || "Telefone não informado" %>
+</p>

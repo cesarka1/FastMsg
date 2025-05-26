@@ -54,7 +54,7 @@ class VeterinariosController < ApplicationController
     @veterinario.destroy!
 
     respond_to do |format|
-      format.html { redirect_to veterinarios_path, status: :see_other, notice: "Veterinario was successfully destroyed." }
+      format.html { redirect_to veterinarios_path, status: :see_other, notice:  "Veterinario apagado com suceso!" }
       format.json { head :no_content }
     end
   end
@@ -67,6 +67,6 @@ class VeterinariosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def veterinario_params
-      params.expect(veterinario: [ :nome, :especialidade, :telefone ])
+      params.expect(veterinario: [ :nome, :especialidade, :telefone, :crmv ])
     end
 end
